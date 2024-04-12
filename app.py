@@ -2,7 +2,7 @@ import time
 import streamlit as st
 from streamlit_option_menu import option_menu
 import cv2
-import inference
+# import inference
 
 st.set_page_config(
         page_title="RoadSafety.AI",
@@ -52,21 +52,21 @@ if selected == "Accident Detection":
                 if not ret:
                     st.error("Error: Failed to read frame from RTSP stream")
                     break
-                prediction=model.infer(frame,confidence=0.8)
-                print(prediction)
-                for prediction in prediction[0].predictions:  # Accessing the list of predictions within the first ObjectDetectionInferenceResponse
-                    x = int(prediction.x)
-                    y = int(prediction.y)
-                    width = int(prediction.width)
-                    height = int(prediction.height)
-                    x0 = x - width / 2
-                    x1 = x + width / 2
-                    y0 = y - height / 2
-                    y1 = y + height / 2
+                # prediction=model.infer(frame,confidence=0.8)
+                # print(prediction)
+                # for prediction in prediction[0].predictions:  # Accessing the list of predictions within the first ObjectDetectionInferenceResponse
+                #     x = int(prediction.x)
+                #     y = int(prediction.y)
+                #     width = int(prediction.width)
+                #     height = int(prediction.height)
+                #     x0 = x - width / 2
+                #     x1 = x + width / 2
+                #     y0 = y - height / 2
+                #     y1 = y + height / 2
     
-                    start_point = (int(x0), int(y0))
-                    end_point = (int(x1), int(y1))
-                    cv2.rectangle(frame, start_point, end_point, color=(0,0,0), thickness=4)
+                #     start_point = (int(x0), int(y0))
+                #     end_point = (int(x1), int(y1))
+                #     cv2.rectangle(frame, start_point, end_point, color=(0,0,0), thickness=4)
 
 
                 
